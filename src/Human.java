@@ -3,7 +3,6 @@ public class Human implements Comparable<Human> {
     String lastName;
     int age;
 
-
     @Override
     public int compareTo(Human humanAge) {
         if (this.age == humanAge.getAge())
@@ -12,7 +11,6 @@ public class Human implements Comparable<Human> {
             return 1;
         else return -1;
     }
-
 
     public enum Gender {
         Male, Female, Transgender, Agender, Other

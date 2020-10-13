@@ -25,7 +25,7 @@ public class Main {
 
         for (Human humanAge : Population)
             humanAge.toString();
-        
+
         System.out.println(Population);
 
         TreeSet<String> Planets = new TreeSet<>();

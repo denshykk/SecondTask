@@ -1,16 +1,21 @@
-import java.util.TreeSet;
+import java.util.*;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        TreeSet<Human> Population = new TreeSet<Human>();
+        TreeSet<Human> Population = new TreeSet<Human>(new Comparator<Human>() {
+            @Override
+            public int compare(Human o1, Human o2) {
+                return o1.getId().compareTo(o2.getId());
+            }
+        });
 
-        Human Alex = new Human("Alex", "Smith", 23, Human.Gender.Male);
-        Human Anna = new Human("Anna", "Garcia", 19, Human.Gender.Female);
-        Human Emma = new Human("Emma", "Davis", 34, Human.Gender.Transgender);
-        Human Samuel = new Human("Samuel", "Brown", 42, Human.Gender.Agender);
-        Human Veronica = new Human("Veronica", "Miller", 10, Human.Gender.Other);
+        Human Alex = new Human("Alex", "Smith", 23, Gender.Male, 1);
+        Human Anna = new Human("Anna", "Garcia", 19, Gender.Female, 2);
+        Human Emma = new Human("Emma", "Davis", 34, Gender.Transgender, 3);
+        Human Samuel = new Human("Samuel", "Brown", 42, Gender.Agender, 4);
+        Human Veronica = new Human("Veronica", "Miller", 10, Gender.Other, 5);
 
         Population.add(Alex);
         Population.add(Anna);
@@ -19,7 +24,9 @@ public class Main {
         Population.add(Veronica);
 
         for (Human humanAge : Population)
-            humanAge.displayInfo();
+            humanAge.toString();
+        
+        System.out.println(Population);
 
         TreeSet<String> Planets = new TreeSet<>();
         Planets.add("Mercury");

@@ -1,29 +1,18 @@
-public class Human implements Comparable<Human> {
-    String firstName;
-    String lastName;
-    int age;
+public final class Human {
+    private String firstName;
+    private String lastName;
+    private int age;
+    private Gender yourGender;
+    private Integer Id;
 
-    @Override
-    public int compareTo(Human humanAge) {
-        if (this.age == humanAge.getAge())
-            return 0;
-        else if (this.age > humanAge.getAge())
-            return 1;
-        else return -1;
-    }
 
-    public enum Gender {
-        Male, Female, Transgender, Agender, Other
-    }
-
-    public Gender yourGender;
-
-    public Human(String firstName, String lastName, int age, Gender yourGender) {
+    public Human(String firstName, String lastName, int age, Gender yourGender, Integer Id) {
         super();
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
         this.yourGender = yourGender;
+        this.Id = Id;
     }
 
     public String getFirstName() {
@@ -58,7 +47,20 @@ public class Human implements Comparable<Human> {
         this.yourGender = yourGender;
     }
 
-    public void displayInfo() {
-        System.out.println("Name: " + getFirstName() + " Last Name: " + getLastName() + " Age: " + getAge() + " Gender: " + getYourGender());
+    public Integer getId() {
+        return Id;
+    }
+
+    public void setId(Integer id) {
+        Id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Human" +
+                " firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age=" + age +
+                ", yourGender=" + yourGender;
     }
 }

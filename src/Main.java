@@ -4,12 +4,11 @@ public class Main {
 
     public static void main(String[] args) {
 
-        TreeSet<Human> Population = new TreeSet<Human>(new Comparator<Human>() {
-            @Override
-            public int compare(Human o1, Human o2) {
-                return o1.getId().compareTo(o2.getId());
-            }
-        });
+        Comparator<Human> comparator = (o1, o2) -> {
+            return o1.getId().compareTo(o2.getId());
+        };
+
+        TreeSet<Human> Population = new TreeSet<Human>(comparator);
 
         Human Alex = new Human("Alex", "Smith", 23, Gender.Male, 1);
         Human Anna = new Human("Anna", "Garcia", 19, Gender.Female, 2);
@@ -23,9 +22,7 @@ public class Main {
         Population.add(Samuel);
         Population.add(Veronica);
 
-        for (Human humanAge : Population)
-            humanAge.toString();
-
+        Population.forEach(humanAge -> humanAge.toString());
         System.out.println(Population);
 
         TreeSet<String> Planets = new TreeSet<>();
